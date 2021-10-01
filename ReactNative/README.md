@@ -7,17 +7,17 @@ It's constantly being updated.
 
 Up to start using the project, some tecnologies must be added to the developer machine.
 
-0.1. Node.js click on the link to install [Node.js](https://nodejs.org/en/download/) \
-0.2 VSCode We strongly recommend using VSCode. Click to install [VSCode](https://code.visualstudio.com/download)
-
+0.1. Node.js - click on the link to install [Node.js](https://nodejs.org/en/download/) \
+0.2. VSCode - We strongly recommend using VSCode. Click to install [VSCode](https://code.visualstudio.com/download) \
+0.3. Android Studio - click on the link to install [Android Studio](https://developer.android.com/studio#downloads)
+0.3.1. Open "More Actions" in Android Studio, select AVD Manager and create a New Virtual Device.
 
 # 1. Install Dependencies
 
 To install dependencies, open terminal and run the commands.
 
-1.1. npm npm i. \
-1.2. yarn yarn.
-
+1.1. npm - npm i. \
+1.2. yarn - yarn.
 
 # 2. Starting the project
 
