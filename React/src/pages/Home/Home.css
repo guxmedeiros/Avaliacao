@@ -1,0 +1,100 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Roboto";
+}
+
+.box {
+  background-color: #333;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .divHome {
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    width: 100%;
+    max-width: 80%;
+    height: 600px;
+    border-radius: 4px;
+    align-items: center;
+    padding-top: 50px;
+    padding-bottom: 30px;
+  }
+}
+
+@media (max-width: 767px) {
+  .divHome {
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    width: 400px;
+    height: 550px;
+    border-radius: 4px;
+    align-items: center;
+    padding-top: 50px;
+    padding-bottom: 30px;
+  }
+}
+
+.divHeaderHome {
+  display: flex; 
+  flex-direction: row; 
+  justify-content: space-between; 
+  width: 90%;
+}
+
+.divWelcomeHome {
+  margin-bottom: 30px; 
+  color: #0a0a0a; 
+  font-weight: bold; 
+  font-size: 1.2rem;
+}
+
+.divCards {
+  display: flex; 
+  flex-direction: column; 
+  overflow-y: auto; 
+  max-height: 420px;
+  width: 80%;
+  margin: 0px auto;
+  align-items: center;
+}
+
+.img {
+  width: 160px;
+  padding-bottom: 20px;
+}
+
+.loginButton {
+  padding-top: 20px;
+}
+
+
+.skillCard {
+  display: flex;
+  flex-direction: column; 
+  color: #0a0a0a; 
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border-radius: 20px; 
+  border: 1px solid #ccc;
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
+  padding: 20px;
+  width: 300px;
+  max-width: 80%;
+  cursor: pointer;
+}
+
+.logoutText {
+  color: #1565C0;
+  text-decoration: none;
+  font-weight: normal;
+  font-size: 1rem;
+  font-weight: bold;
+}
