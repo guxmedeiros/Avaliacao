@@ -13,17 +13,6 @@ const Home = () => {
 
   const loadUser = async () => {
     let user = "Usuário logado";
-    // let url = "http:localhost:4000/skills"
-    // const res = await fetch("", {
-    //   method: "GET",
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //   },
-    //   mode: "no-cors"
-    // });
-    // const json = await res.json();
-    // user = json !== null ? json : null;
-    // var formatName = user.name.split(" ");
 
     var formatName = user.split(" ");
 
@@ -66,17 +55,6 @@ const Home = () => {
       },
     ];
 
-    // let url = "http:localhost:4000/skills"
-    // const res = await fetch("", {
-    //   method: "GET",
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //   },
-    //   mode: "no-cors"
-    // });
-    // const json = await res.json();
-    // skills = json !== null ? json : null;
-
     return setSkills(skills);
   };
 
@@ -88,17 +66,6 @@ const Home = () => {
   const changeUserSkill = (user) => {
     let skillsBefore = skills;
     skillsBefore[user.id].name = skillUpdated;
-
-    // let url = "http:localhost:4000/skills"
-    // const res = await fetch("", {
-    //   method: "POST",
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //   },
-    //   body: JSON.stringify({skillsBefore[user.id]})
-    // });
-    // const json = await res.json();
-    // skills = json !== null ? json : null;
 
     setSkills(skillsBefore);
     setShowModal(false);
@@ -141,10 +108,6 @@ const Home = () => {
               <option value="C#">C#</option>
               <option value="Java">Java</option>
             </select>
-
-            {/* {skills.map((item, index) => {
-                  return <option value={item.name} >{item.name}</option>
-                })} */}
 
             <button
               className="loginButtonModal"
