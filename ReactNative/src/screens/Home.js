@@ -11,10 +11,10 @@ const styles = ReactNative.StyleSheet.create({
   box: {
     backgroundColor: '#fff',
     width: '80%',
+    minHeight: 500,
     padding: 20,
     height: '90%',
     borderRadius: 5,
-    minHeight: 750,
   },
   imageLogo: {
     width: '40%',
@@ -79,10 +79,11 @@ const styles = ReactNative.StyleSheet.create({
   },
   divCards: {
     flexDirection: 'column',
-    maxHeight: 420,
+    maxHeight: '89%',
     width: '80%',
     margin: 'auto',
     alignSelf: 'center',
+    overflow: 'scroll',
   },
   skillCard: {
     flexDirection: 'column',
@@ -90,17 +91,33 @@ const styles = ReactNative.StyleSheet.create({
     marginTop: 10,
     marginBottom: 10,
     borderRadius: 20,
-    maxWidth: '80%',
-    borderColor: 'grey',
+    maxWidth: '95%',
+    borderColor: '#ccc',
     borderWidth: 1,
-    width: '90%',
+    width: '100%',
     padding: 20,
+    minHeight: 100,
+  },
+  modalBackground: {
+    position: 'absolute',
+    top: 0,
+    bottom: 0,
+    left: 0,
+    right: 0,
+    zIndex: 3,
+    elevation: 3,
+    flex: 1,
+    alignSelf: 'stretch',
+    backgroundColor: 'rgba(0, 0, 0, 0.4)',
   },
   modalContent: {
     width: '100%',
     maxWidth: '90%',
+    marginLeft: 'auto',
+    marginRight: 'auto',
     minHeight: 400,
-    zIndex: 21,
+    zIndex: 2,
+    elevation: 21,
     borderRadius: 20,
     marginTop: 100,
     padding: 20,
@@ -191,6 +208,17 @@ const styles = ReactNative.StyleSheet.create({
     padding: 5,
     backgroundColor: 'white',
   },
+  modalTop: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    padding: 20,
+  },
+  modalTitle: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    maxWidth: '80%',
+    color: '#0a0a0a',
+  },
   modalTextarea: {
     height: 250,
     maxHeight: 250,
@@ -217,13 +245,19 @@ const styles = ReactNative.StyleSheet.create({
     width: '100%',
     maxWidth: '90%',
     height: '95vh',
-    zIndex: 21,
+    zIndex: 4,
+    elevation: 4,
     borderRadius: 20,
     marginLeft: 'auto',
     marginRight: 'auto',
     padding: 20,
     backgroundColor: 'white',
     shadowColor: 'rgba(0, 0, 0, 0.4)',
+  },
+  modalCloseButton: {
+    color: '#e54f6e',
+    fontSize: 22,
+    fontWeight: 'bold',
   },
 });
 
@@ -337,7 +371,7 @@ export default function Home({navigation}) {
             </ReactNative.Text>
             <ReactNative.Text
               style={styles.modalCloseButton}
-              onClick={() => {
+              onPress={() => {
                 setShowModal(false);
               }}>
               &times;
@@ -349,36 +383,31 @@ export default function Home({navigation}) {
               {skillToShow.username}
             </ReactNative.Text>
             <ReactNative.Text style={styles.modalLabel}>
-              {skillToShow.name}
+              {skillToShow.name + '\n\n'}
             </ReactNative.Text>
-            {/* <br />
-            <br /> */}
 
             <ReactNative.Text style={styles.modalLabelBold}>
               Habilidade
             </ReactNative.Text>
-            {/* <select
+            <ReactNative.Picker
               style={styles.modalInput}
               id="skillSelect"
-              value={skillUpdated}
-              onChange={e => {
-                setSkillUpdated(e.target.value);
+              mode="dropdown"
+              selectedValue={skillUpdated}
+              onValueChange={newValue => {
+                setSkillUpdated(newValue);
               }}>
-              <option value="">Selecione</option>
-              <option value="Javascript">Javascript</option>
-              <option value="PHP">PHP</option>
-              <option value="C#">C#</option>
-              <option value="Java">Java</option>
-            </select> */}
-
-            {/* {skills.map((item, index) => {
-                  return <option value={item.name} >{item.name}</option>
-                })} */}
+              <ReactNative.Picker.Item label="Selecione" value="" />
+              <ReactNative.Picker.Item label="Javascript" value="Javascript" />
+              <ReactNative.Picker.Item label="PHP" value="PHP" />
+              <ReactNative.Picker.Item label="C#" value="C#" />
+              <ReactNative.Picker.Item label="Java" value="Java" />
+            </ReactNative.Picker>
 
             <ReactNative.Button
               title="Salvar"
               style={styles.buttonModal}
-              onClick={() => {
+              onPress={() => {
                 changeUserSkill(skillToShow);
               }}
             />
@@ -390,32 +419,24 @@ export default function Home({navigation}) {
 
   const SkillsCard = ({item}) => {
     return (
-      <ReactNative.View
-        key={item.id}
-        style={styles.skillCard}
-        onClick={() => {
+      <ReactNative.TouchableOpacity
+        onPress={() => {
           setShowModal(true);
           setSkillToShow(item);
         }}>
-        <ReactNative.Text>{item.username}</ReactNative.Text>
-        <ReactNative.View
-          style={{
-            justifyContent: 'space-between',
-            marginTop: 20,
-          }}>
-          <ReactNative.Text>{item.name}</ReactNative.Text>
-          <ReactNative.Text> Skill Level: {item.skill_level}</ReactNative.Text>
+        <ReactNative.View key={item.id} style={styles.skillCard}>
+          <ReactNative.Text>{item.username}</ReactNative.Text>
+          <ReactNative.View
+            style={{justifyContent: 'space-between', marginTop: 20}}>
+            <ReactNative.Text>{item.name}</ReactNative.Text>
+            <ReactNative.Text>
+              {' '}
+              Skill Level: {item.skill_level}
+            </ReactNative.Text>
+          </ReactNative.View>
         </ReactNative.View>
-      </ReactNative.View>
+      </ReactNative.TouchableOpacity>
     );
-  };
-
-  const SkillsCardMap = ({}) => {
-    return skills !== ''
-      ? skills.map(item => {
-          return <SkillsCard key={item.id} item={item} />;
-        })
-      : null;
   };
 
   return (
@@ -443,9 +464,13 @@ export default function Home({navigation}) {
             {welcomeText}
           </ReactNative.Text>
         </ReactNative.View>
-        <ReactNative.View style={styles.divCards}>
-          <SkillsCardMap />
-        </ReactNative.View>
+        <ReactNative.ScrollView style={styles.divCards}>
+          {skills !== ''
+            ? skills.map((item, index) => {
+                return <SkillsCard key={item.id} item={item} />;
+              })
+            : null}
+        </ReactNative.ScrollView>
 
         {showModal && <Modal key={skillToShow.id} />}
       </ReactNative.View>
