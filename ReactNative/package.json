@@ -4,8 +4,8 @@
   "private": true,
   "scripts": {
     "android": "yarn && react-native run-android",
-    "ios": "react-native run-ios",
-    "start": "react-native start",
+    "ios": "yarn && react-native run-ios",
+    "start": "yarn && react-native start",
     "test": "jest",
     "lint": "eslint .",
     "release": "cd android && ./gradlew assembleRelease"
